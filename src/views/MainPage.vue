@@ -1,87 +1,135 @@
 <template>
+	<div id="main-page" class="w-100">
+		<div class="bg-white py-5">
+			<div class="container">
+				<h2 class="display-4 border-bottom">Our Features</h2>
+				<div class="row align-items-center mb-5">
+					<div class="col-lg-6 order-2 order-lg-1">
+						<div class="col d-flex align-items-start">
+							<div class="fs-4 me-3">
+								<svg class="" height="1em" width="1em">
+									<use xlink:href="#toggles2"></use>
+								</svg>
+							</div>
+							<div>
+								<h3 class="fs-2 text-body-emphasis">Diverse Cat Breeds</h3>
+								<p>
+									Discover an extensive showcase of diverse cat breeds, each
+									highlighted for its unique characteristics, history, and
+									charm.
+								</p>
+							</div>
+						</div>
+						<a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">
+							Learn More
+						</a>
+					</div>
+					<div class="col-lg-6 px-5 mx-auto order-1 order-lg-2">
+						<img
+							src="src/assets/images/bg1.jpg"
+							alt=""
+							class="img-fluid mb-4 mb-lg-0"
+						/>
+					</div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-lg-6 px-5 mx-auto">
+						<img
+							src="src/assets/images/bg2.jpg"
+							alt=""
+							class="img-fluid mb-4 mb-lg-0"
+						/>
+					</div>
+					<div class="col-lg-6">
+						<div class="col d-flex align-items-start">
+							<div class="fs-4 me-3">
+								<svg class="" height="1em" width="1em">
+									<use xlink:href="#toggles2"></use>
+								</svg>
+							</div>
+							<div>
+								<h3 class="fs-2 text-body-emphasis">Heartwarming Stories</h3>
+								<p>
+									Delve into heartwarming stories of extraordinary cats and
+									their human companions. Our platform shares touching
+									narratives that celebrate the deep connections forged between
+									cats and their devoted owners.
+								</p>
+							</div>
+						</div>
+						<a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">
+							Learn More
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
-  <div id='main-page' class='w-100'>
-    <div class="bg-white py-5">
-      <div class="container">
-        <h2 class="display-4 border-bottom">Our Features</h2>
-        <div class="row align-items-center mb-5">
-          <div class="col-lg-6 order-2 order-lg-1">
-            <div class="col d-flex align-items-start">
-              <div class="fs-4 me-3">
-                <svg class="" height="1em" width="1em"><use xlink:href="#toggles2"></use></svg>
-              </div>
-              <div>
-                <h3 class="fs-2 text-body-emphasis">Diverse Cat Breeds</h3>
-                <p>Discover an extensive showcase of diverse cat breeds, each highlighted for its unique characteristics, history, and charm.</p>
-              </div>
-            </div>
-            <a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
-          </div>
-          <div class="col-lg-6 px-5 mx-auto order-1 order-lg-2"><img src="src/assets/images/bg1.jpg" alt="" class="img-fluid mb-4 mb-lg-0" /></div>
-        </div>
-        <div class="row align-items-center">
-          <div class="col-lg-6 px-5 mx-auto"><img src="src/assets/images/bg2.jpg" alt="" class="img-fluid mb-4 mb-lg-0" /></div>
-          <div class="col-lg-6">
-            <div class="col d-flex align-items-start">
-              <div class="fs-4 me-3">
-                <svg class="" height="1em" width="1em"><use xlink:href="#toggles2"></use></svg>
-              </div>
-              <div>
-                <h3 class="fs-2 text-body-emphasis">Heartwarming Stories</h3>
-                <p>Delve into heartwarming stories of extraordinary cats and their human companions. Our platform shares touching narratives that celebrate the deep connections forged between cats and their devoted owners.</p>
-              </div>
-            </div>
-            <a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
-          </div>
-        </div>
-      </div>
-    </div>
+		<div class="bg-light py-5">
+			<div class="container">
+				<div class="row h-100 align-items-center">
+					<div class="col-lg-6">
+						<h2 class="display-4 border-bottom">About us</h2>
+						<p class="lead text-muted mb-0">
+							We are passionate about celebrating the enchanting world of cats.
+						</p>
+						<p class="lead text-muted">
+							Dive into the stories, tips, and shared experiences that make us a
+							hub for all things feline. Join us in exploring the extraordinary
+							bond between humans and their whiskered companions, and become
+							part of a community that cherishes the joy, comfort, and unique
+							charm that cats bring into our lives.
+						</p>
+					</div>
+					<div class="col-lg-6">
+						<img
+							src="src/assets/images/bg3.jpg"
+							alt=""
+							class="img-fluid"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <div class="bg-light py-5">
-      <div class="container">
-        <div class="row h-100 align-items-center">
-          <div class="col-lg-6">
-            <h2 class="display-4 border-bottom">About us</h2>
-            <p class="lead text-muted mb-0">We are passionate about celebrating the enchanting world of cats.</p>
-            <p class="lead text-muted">
-              Dive into the stories, tips, and shared experiences that make us a hub for all things feline.
-              Join us in exploring the extraordinary bond between humans and their whiskered companions,
-              and become part of a community that cherishes the joy, comfort, and unique charm that cats bring into our lives.
-            </p>
-          </div>
-          <div class="col-lg-6"><img src="/src/assets/images/bg3.jpg" alt="" class="img-fluid" /></div>
-        </div>
-      </div>
-    </div>
+		<div class="bg-white images py-5">
+			<div class="container">
+				<div class="h-100 align-items-center">
+					<h2 class="display-4 border-bottom">Our gallery</h2>
+					<p>
+						Step into the enchanting world of our gallery, where each image
+						tells a story of feline grace, charm, and individuality.
+					</p>
 
-    <div class='bg-white images py-5'>
-      <div class="container">
-        <div class="h-100 align-items-center">
-          <h2 class="display-4 border-bottom">Our gallery</h2>
-          <p>Step into the enchanting world of our gallery, where each image tells a story of feline grace, charm, and individuality.</p>
+					<SimpleGallery
+						gallery-id="our-gallery"
+						main-class="py-3 justify-content-center row-gap-4"
+						:images="images"
+					/>
+				</div>
+			</div>
+		</div>
 
-          <SimpleGallery gallery-id="our-gallery" main-class='py-3 justify-content-center row-gap-4' :images="images" />
-        </div>
-      </div>
-    </div>
-
-    <TopUsers />
-  </div>
-
+		<TopUsers />
+	</div>
 </template>
 
 <script>
-  export default {
-    name: 'MainPage',
-  }
+	export default {
+		name: 'MainPage',
+	};
 </script>
 
 <script setup>
-  // import { inject, } from 'vue';
+	// import { inject, } from 'vue';
 
-  import SimpleGallery from '/src/components/SimpleGallery.vue';
-  import TopUsers from '/src/components/TopUsers.vue';
+	import SimpleGallery from '/src/components/SimpleGallery.vue';
+	import TopUsers from '/src/components/TopUsers.vue';
 
+	// const emitter = inject('emitter');
+	// const authStore = inject('authStore');
+	// const { useAuthStore, } = authStore;
+	// const { isAuthenticated, } = useAuthStore();
 
 	const images = [
 		{

@@ -1,123 +1,119 @@
 <template>
+	<footer id="footer" class="footer py-3 bg-body-tertiary w-100">
+		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+			<li v-for="(link, index) in navLinks" :key="index" class="nav-item">
+				<router-link
+					:to="{ name: link.event, query: returnQuery(link.event) }"
+					custom
+					v-slot="{ href, isActive }"
+				>
+					<a
+						class="nav-link px-2 text-body-secondary"
+						:class="{
+							disabled: link.disabled,
+							active: isActive || isActiveLink(link.event),
+						}"
+						:href="href"
+						@click.prevent="handleLinkClick(link.event)"
+					>
+						{{ link.text }}
+					</a>
+				</router-link>
+			</li>
+		</ul>
 
-  <footer id='footer' class="footer py-3 bg-body-tertiary w-100">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li v-for="(link, index) in navLinks" :key="index" class="nav-item">
-        <router-link :to="{ name: link.event, query: returnQuery(link.event) }"
-          custom
-          v-slot="{ href, isActive, }"
-        >
-          <a class="nav-link px-2 text-body-secondary"
-            :class="{ 'disabled': link.disabled, 'active': isActive || isActiveLink(link.event) }"
-            :href="href" @click.prevent="handleLinkClick(link.event)"
-          >
-            {{ link.text }}
-          </a>
-        </router-link>
-      </li>
-    </ul>
-
-    <p class="text-center text-body-secondary">© {{ currentYear }} {{ appName }}, Inc</p>
-  </footer>
-
+		<p class="text-center text-body-secondary">
+			© {{ currentYear }} {{ appName }}, Inc
+		</p>
+	</footer>
 </template>
 
 <script>
-  export default {
-    name: 'AppFooter',
-  }
+	export default {
+		name: 'AppFooter',
+	};
 </script>
 
 <script setup>
+	import { ref, onMounted, computed, inject } from 'vue';
+	import { useRouter } from 'vue-router';
 
-  import { ref, onMounted, computed, inject, } from 'vue';
-  import { useRouter } from 'vue-router';
+	defineProps({
+		appName: {
+			type: String,
+			required: false,
+			default: '',
+		},
+	});
 
+	const router = useRouter();
 
-  defineProps({
-    appName: {
-      type: String,
-      required: false,
-      default: ''
-    }
-  });
+	const emitter = inject('emitter');
+	const authStore = inject('authStore');
+	const { useAuthStore } = authStore;
+	const { isAuthenticated } = useAuthStore();
 
-  const router = useRouter();
+	const navLinks = computed(() => {
+		const arr = [
+			{ text: 'Home', event: 'MainPage', href: '#' },
+			{ text: 'Features', event: 'Features', href: '#' },
+			{ text: 'Pricing', event: 'Pricing', href: '#' },
+			{ text: 'Cats', event: 'CatsList', href: '#' },
+			{ text: 'About', event: 'About', href: '#' },
+		];
 
-  const emitter = inject('emitter');
-  const authStore = inject('authStore');
-  const { useAuthStore } = authStore;
-  const { isAuthenticated } = useAuthStore();
+		if (!isAuthenticated.value)
+			arr.push({ text: 'Login', event: 'Login', href: '#' });
 
-  const navLinks = computed(() => {
-    const arr = [
-      { text: 'Home', event: 'MainPage', href: '#' },
-      { text: 'Features', event: 'Features', href: '#' },
-      { text: 'Pricing', event: 'Pricing', href: '#' },
-      { text: 'Cats', event: 'CatsList', href: '#' },
-      { text: 'About', event: 'About', href: '#' },
-    ];
+		return arr;
+	});
 
-    if (!isAuthenticated.value)
-      arr.push({ text: 'Login', event: 'Login', href: '#' });
+	const footer = ref(null);
+	const currentYear = ref(new Date().getFullYear());
 
-    return arr;
-  });
+	const returnQuery = (routeName) => {
+		if (!routeName || routeName !== 'Login') return null;
 
-  const footer = ref(null);
-  const currentYear = ref(new Date().getFullYear());
+		const redirect = router.currentRoute.value.query.redirect;
+		if (redirect) return { redirect };
 
+		return { redirect: router.currentRoute.value.fullPath };
+	};
 
-  const returnQuery = (routeName) => {
-    if (!routeName || routeName !== 'Login')
-      return null;
+	const isActiveLink = (page) => {
+		let name = router.currentRoute.value.name;
+		if (name === 'CatDetail') name = 'CatsList';
+		else if (name === 'ViewUser') name = 'UsersList';
+		return name === page;
+	};
 
-    const redirect = router.currentRoute.value.query.redirect;
-    if (redirect)
-      return { redirect };
+	const setTransition = () => {
+		emitter.emit('route-transition', 'just-fade');
+	};
 
-    return { redirect: router.currentRoute.value.fullPath };
-  };
+	const handleLinkClick = (page) => {
+		if (!page) return;
 
-  const isActiveLink = (page) => {
-    let name = router.currentRoute.value.name;
-    if (name === 'CatDetail')
-      name = 'CatsList';
-    else if (name === 'ViewUser')
-      name = 'UsersList';
-    return name === page;
-  };
+		setTransition();
+		router.push({ name: page, query: returnQuery(page) });
+	};
 
-  const setTransition = () => {
-    emitter.emit('route-transition', 'just-fade');
-  };
+	const staticPosition = () => {
+		setTimeout(() => {
+			footer.value.classList.remove('slide-from-bottom');
+			footer.value.removeAttribute('style');
+		}, 500);
+	};
 
-  const handleLinkClick = (page) => {
-    if (!page)
-      return;
+	onMounted(() => {
+		footer.value = document.getElementById('footer');
+		footer.value.style.position = 'relative';
+		footer.value.style.bottom = '-145px';
 
-    setTransition();
-    router.push({ name: page, query: returnQuery(page) });
-  };
+		setTimeout(() => {
+			footer.value.classList.add('slide-from-bottom');
 
-  const staticPosition = () => {
-    setTimeout(() => {
-      footer.value.classList.remove('slide-from-bottom');
-      footer.value.removeAttribute('style');
-    }, 500);
-  };
-
-
-  onMounted(() => {
-    footer.value = document.getElementById('footer');
-    footer.value.style.position = 'relative';
-    footer.value.style.bottom = '-145px';
-
-    setTimeout(() => {
-      footer.value.classList.add('slide-from-bottom');
-
-      staticPosition();
-    }, 500);
-  });
-
+			staticPosition();
+		}, 500);
+	});
 </script>
