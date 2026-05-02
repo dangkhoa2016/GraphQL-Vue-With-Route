@@ -2,6 +2,8 @@
 
 > 🌐 Language / Ngôn ngữ: [English](SCREENSHOTS_SUMMARY.md) | **Tiếng Việt**
 
+> Tài liệu chính: [../README.md](../README.md) | [../README.vi.md](../README.vi.md)
+
 Tài liệu này liệt kê các ảnh chụp màn hình trong thư mục `screenshots` của dự án **GraphQL-Vue-With-Route**. Mỗi mục gồm: tên file (link tới ảnh), mô tả ngắn, và các view/component liên quan để tiện tham chiếu khi viết tài liệu hoặc kiểm thử UI.
 
 ---

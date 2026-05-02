@@ -2,6 +2,8 @@
 
 > 🌐 Language / Ngôn ngữ: **English** | [Tiếng Việt](SCREENSHOTS_SUMMARY.vi.md)
 
+> Main documentation: [../README.md](../README.md) | [../README.vi.md](../README.vi.md)
+
 This document lists the screenshots in the `screenshots` folder of the **GraphQL-Vue-With-Route** project. Each entry includes: the file name (linked to the image), a short description, and the related views/components for easier reference when writing documentation or performing UI testing.
 
 ---
